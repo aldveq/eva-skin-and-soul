@@ -33,7 +33,7 @@ function base_theme_jetpack_setup() {
 		'jetpack-content-options',
 		array(
 			'post-details' => array(
-				'stylesheet' => 'base-theme-style',
+				'stylesheet' => 'theme-eva-skin-and-soul-style',
 				'date'       => '.posted-on',
 				'categories' => '.cat-links',
 				'tags'       => '.tags-links',

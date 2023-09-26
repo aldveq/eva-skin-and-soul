@@ -1,6 +1,6 @@
 <?php
 /**
- * Base Theme Theme Customizer
+ * Eva Skin And Soul Theme Customizer
  *
  * @package Base_Theme
  */
@@ -56,6 +56,6 @@ function base_theme_customize_partial_blogdescription() {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function base_theme_customize_preview_js() {
-	wp_enqueue_script( 'base-theme-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), _S_VERSION, true );
+	wp_enqueue_script( 'theme-eva-skin-and-soul-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), _S_VERSION, true );
 }
 add_action( 'customize_preview_init', 'base_theme_customize_preview_js' );

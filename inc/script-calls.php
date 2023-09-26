@@ -12,7 +12,7 @@ function ca_enqueue_page_style($page_style_array)
   $THEME_PATH = get_template_directory_uri();
 
   foreach ($page_style_array as $slug => $dependency) {
-    $dependency = $dependency ? $dependency : 'base-theme-style';
+    $dependency = $dependency ? $dependency : 'theme-eva-skin-and-soul-style';
     if (is_page_template('pages/page-' . $slug . '.php')) {
       wp_enqueue_style( $slug . '-css', $THEME_PATH . '/css/pages/' . $slug . '.css', array($dependency), _S_VERSION);
     }
