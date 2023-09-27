@@ -103,6 +103,11 @@ function base_theme_setup()
 		)
 	);
 
+	add_filter('use_block_editor_for_post', '__return_false');
+	add_action( 'init', function() {
+		remove_post_type_support( 'page', 'editor' );
+	}, 99);
+
     // Add image sizes
     add_image_size('logo_size', 69, 37, true);
 }
