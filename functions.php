@@ -102,6 +102,9 @@ function base_theme_setup()
 			'flex-height' => true,
 		)
 	);
+
+    // Add image sizes
+    add_image_size('logo_size', 69, 37, true);
 }
 add_action('after_setup_theme', 'base_theme_setup');
 
@@ -148,7 +151,7 @@ function base_theme_scripts()
 	wp_enqueue_style( 'theme-eva-skin-and-soul-fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css', array(), null, 'all' );
 	wp_style_add_data('theme-eva-skin-and-soul-style', 'rtl', 'replace');
 
-	wp_enqueue_script('theme-eva-skin-and-soul-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+	wp_enqueue_script('theme-eva-skin-and-soul-classes', get_template_directory_uri() . '/js/add-classes.js', array('jquery'), _S_VERSION, true);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');

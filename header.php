@@ -9,6 +9,9 @@
  * @package Base_Theme
  */
 
+// ACF Variables
+$theme_options_logo_default = get_field('theme_options_logo_default', 'option');
+$theme_options_socials = get_field('theme_options_socials', 'option');
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -26,34 +29,57 @@
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'theme-eva-skin-and-soul' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$base_theme_description = get_bloginfo( 'description', 'display' );
-			if ( $base_theme_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $base_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-sm-6 col-md-6 col-lg-1">
+					<div class="site-branding">
+						<?php
+							if (isset($theme_options_logo_default) && !empty($theme_options_logo_default)):
+								echo wp_get_attachment_image( 
+									$theme_options_logo_default, 
+									'logo_size', 
+									false, 
+									array(
+										'class' => 'logo',
+										'loading' => 'lazy'
+									) 
+								);
+							endif;
+						?>
+					</div><!-- .site-branding -->
+				</div>
+				<div class="col-12 col-sm-6 col-md-6 col-lg-11">
+					<div class="navigation-socials-wrapper">
+						<nav id="site-navigation" class="main-navigation">
+							<?php
+							wp_nav_menu(
+								array(
+									'theme_location' => 'menu-1',
+									'menu_id'        => 'primary-menu',
+								)
+							);
+							?>
+						</nav><!-- #site-navigation -->
+						<?php
+							if(isset($theme_options_socials) && is_array($theme_options_socials) && count($theme_options_socials) > 0):
+								?>
+									<div class="socials-wrapper">
+										<?php
+											foreach($theme_options_socials as $social):
+												$social_url = $social['theme_option_social_link']['url'];
+												$social_target = $social['theme_option_social_link']['target'] ? $social['theme_option_social_link']['target'] : '_self';
+												?>
+													<a href="<?php echo esc_url($social_url);?>" target="<?php echo esc_attr( $social_target ); ?>" class="social-icon"><i class="<?php echo esc_attr( $social['theme_options_fontawesome_icon'] ); ?>"></i></a>
+												<?php
+											endforeach;
+										?>
+									</div>
+								<?php
+							endif;
+						?>
+					</div>
+				</div>
+			</div>
+		</div>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'theme-eva-skin-and-soul' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
