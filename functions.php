@@ -145,6 +145,7 @@ add_action('widgets_init', 'base_theme_widgets_init');
 function base_theme_scripts()
 {
 	wp_enqueue_style('theme-eva-skin-and-soul-style', get_stylesheet_uri(), array(), _S_VERSION);
+	wp_enqueue_style( 'theme-eva-skin-and-soul-fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css', array(), null, 'all' );
 	wp_style_add_data('theme-eva-skin-and-soul-style', 'rtl', 'replace');
 
 	wp_enqueue_script('theme-eva-skin-and-soul-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
