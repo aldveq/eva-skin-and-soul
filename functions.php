@@ -110,6 +110,7 @@ function base_theme_setup()
 
     // Add image sizes
     add_image_size('logo_size', 69, 37, true);
+	add_image_size('hero_image', 636, 713, true);
 }
 add_action('after_setup_theme', 'base_theme_setup');
 

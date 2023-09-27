@@ -2,13 +2,13 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 1px solid;
-	border-color: $color__border-button;
+	border       : 1px solid;
+	border-color : $color__border-button;
 	border-radius: 3px;
-	background: $color__background-button;
-	color: rgba(0, 0, 0, 0.8);
-	line-height: 1;
-	padding: 0.6em 1em 0.4em;
+	background   : $color__background-button;
+	color        : rgba(0, 0, 0, 0.8);
+	line-height  : 1;
+	padding      : 0.6em 1em 0.4em;
 
 	&:hover {
 		border-color: $color__border-button-hover;
@@ -17,5 +17,33 @@ input[type="submit"] {
 	&:active,
 	&:focus {
 		border-color: $color__border-button-focus;
+	}
+}
+
+.btn {
+	color          : #FFF;
+	text-align     : center;
+	font-family    : $font__secondary;
+	font-size      : 16px;
+	font-style     : normal;
+	font-weight    : 600;
+	line-height    : 50px;
+	min-width      : 164px;
+	min-height     : 56px;
+	border-radius  : 5px;
+	text-decoration: none;
+	cursor         : pointer;
+	display        : flex;
+	justify-content: center;
+	align-items    : center;
+
+	&.btn-primary {
+		background: #A88855;
+
+		&:hover,
+		&:active,
+		&:visited {
+			color: #fff;
+		}
 	}
 }
