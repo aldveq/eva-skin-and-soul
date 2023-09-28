@@ -112,6 +112,7 @@ function base_theme_setup()
     add_image_size('logo_size', 69, 37, true);
 	add_image_size('hero_image', 636, 713, true);
 	add_image_size('general_info_image', 500, 450, true);
+	add_image_size('services_thumbnail_image', 350, 350, true);
 }
 add_action('after_setup_theme', 'base_theme_setup');
 
@@ -158,6 +159,7 @@ function base_theme_scripts()
 	wp_enqueue_style( 'theme-eva-skin-and-soul-fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css', array(), null, 'all' );
 	wp_style_add_data('theme-eva-skin-and-soul-style', 'rtl', 'replace');
 
+	wp_enqueue_script('theme-eva-skin-and-soul-gsap', get_template_directory_uri() . '/js/gsap.min.js', array(), _S_VERSION, true);
 	wp_enqueue_script('theme-eva-skin-and-soul-classes', get_template_directory_uri() . '/js/add-classes.js', array('jquery'), _S_VERSION, true);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -166,7 +168,7 @@ function base_theme_scripts()
 }
 add_action('wp_enqueue_scripts', 'base_theme_scripts');
 
-require get_template_directory() . '/inc/script-calls.php';
+//require get_template_directory() . '/inc/script-calls.php';
 
 /**
  * Implement the Custom Header feature.
@@ -192,6 +194,11 @@ require get_template_directory() . '/inc/customizer.php';
  * Theme Options
  */
 require get_template_directory() . '/inc/theme-options.php';
+
+/**
+ * Custom Post Types Registration
+ */
+require get_template_directory() . '/inc/cpts-registration.php';
 
 /**
  * Load Jetpack compatibility file.
