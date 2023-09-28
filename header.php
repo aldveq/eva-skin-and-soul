@@ -35,15 +35,21 @@ $theme_options_socials = get_field('theme_options_socials', 'option');
 					<div class="site-branding">
 						<?php
 							if (isset($theme_options_logo_default) && !empty($theme_options_logo_default)):
-								echo wp_get_attachment_image( 
-									$theme_options_logo_default, 
-									'logo_size', 
-									false, 
-									array(
-										'class' => 'logo',
-										'loading' => 'lazy'
-									) 
-								);
+								?>
+								<a href="<?php echo esc_url(home_url()); ?>" target="_self">
+								<?php
+									echo wp_get_attachment_image( 
+										$theme_options_logo_default, 
+										'logo_size', 
+										false, 
+										array(
+											'class' => 'logo',
+											'loading' => 'lazy'
+										) 
+									);
+								?>
+								</a>
+								<?php
 							endif;
 						?>
 					</div><!-- .site-branding -->
